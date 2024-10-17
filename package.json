@@ -1,0 +1,12 @@
+{
+  "name": "bootcamp-challenge07",
+  "version": "1.0.0",
+  "description": "A program to create a README file using question prompts",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Matt Oberdalhoff",
+  "license": "MIT"
+}
