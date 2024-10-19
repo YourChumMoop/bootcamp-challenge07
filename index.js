@@ -47,7 +47,7 @@ inquirer
     {
         //TODO: Prompt for Contributing (input)
         type: 'input',
-        message: colors.magenta('Please add text for ') + colors.yellow('Contributing:'),
+        message: colors.magenta('Please enter instruction for ') + colors.yellow('Contributing:'),
         name: 'contributing'       
     },
     {
@@ -77,61 +77,64 @@ inquirer
     }
 ])
 .then((response) => {
-    readmeBuild = `
-    #${response.projectTitle}
+    const readmeBuild = `# ${response.projectTitle}
 
-    ${licenceDict[response.licence]}
+${licenceDict[response.licence]}
 
-    ##Description
-    ${response.description}
-    
-    ####Table of Contents
-    *[Installation](#installation)
-    *[Usage](#usage)
-    *[Contributors](#contributors)
-    *[Tests](#tests)
-    *[Licence](#licence)
-    *[Questions](#questions)
-    
-    
-    ##Installation
+## Description
+${response.description}
 
-    ${response.installation}
-    [Return to Top](#${readmeFormater(response.projectTitle)})
+#### Table of Contents
+* [Installation](#installation)
+* [Usage](#usage)
+* [Contribution Guidelines](#contribution-guidlines)
+* [Tests](#tests)
+* [Licence](#licence)
+* [Questions](#questions)
 
-    ##Usage
 
-    ${response.usage}
-    [Return to Top](#${readmeFormater(response.projectTitle)})
+## Installation
 
-    ##Contributors
+${response.installation}
+[Return to Top](#${readmeFormater(response.projectTitle)})
 
-    ${response.contributing}
-    [Return to Top](#${readmeFormater(response.projectTitle)})
+## Usage
 
-    ##Tests
+${response.usage}
+[Return to Top](#${readmeFormater(response.projectTitle)})
 
-    ${response.tests}
-    [Return to Top](#${readmeFormater(response.projectTitle)})
+## Contribution Guidlines
 
-    ##Licence
+${response.contributing}
+[Return to Top](#${readmeFormater(response.projectTitle)})
 
-    ${licenceDict[response.licence]}
-    This project is protected by the ${response.licence} licence
+## Tests
 
-    ##Questions
+${response.tests}
+[Return to Top](#${readmeFormater(response.projectTitle)})
 
-    ###
+## Licence
+
+${licenceDict[response.licence]}
+This project is protected by ${response.licence}
+
+## Questions
+
+### GitHub
+github.com/${response.gitHubUsername.replaceAll(' ','')}
+### Email
+Please reach out to me with any questions at ${response.email}
+[Return to Top](#${readmeFormater(response.projectTitle)})
+
     `
     fs.writeFile('README.md', readmeBuild, (err) =>
-  err ? console.error(err) : colors.green(console.log('Success!'))
+  err ? console.error(err) :console.log(colors.green(response.projectTitle + " README.md complete."))
 )
-    colors.green(console.log(response.projectTitle + " README.md complete."));
-})
+});
 
 const readmeFormater = (unformatted) => {
     return (unformatted.replaceAll(" ","-")).toLowerCase();
-}
+};
 
 
 
