@@ -6,18 +6,23 @@ import inquirer from 'inquirer';
 const licenceDict = {
     'Apache 2.0 License' : '[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)',
     'Creative Commons' : '[![License: CC0-1.0](https://licensebuttons.net/l/zero/1.0/80x15.png)](http://creativecommons.org/publicdomain/zero/1.0/)',
-    'The MIT License' : '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)'
-}
+    'The MIT License' : '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)',
+    'No Licence' : ''
+};
+const readmeFormater = (unformatted) => {
+    return (unformatted.replaceAll(" ","-")).toLowerCase();
+};
 let splashMessage =
 `  
-   |*************************|    
-   |     ~README Builder~    |
-   |                         |
-    ************************* 
+                            |*************************|    
+                            |     ~README Builder~    |
+                            |                         |
+                             ************************* 
     
     `
 console.log(colors.magenta(splashMessage));
 //TODO: a list of prompts from inquirer...
+
 inquirer
 .prompt([
     {
@@ -96,21 +101,25 @@ ${response.description}
 ## Installation
 
 ${response.installation}
+
 [Return to Top](#${readmeFormater(response.projectTitle)})
 
 ## Usage
 
 ${response.usage}
+
 [Return to Top](#${readmeFormater(response.projectTitle)})
 
 ## Contribution Guidlines
 
 ${response.contributing}
+
 [Return to Top](#${readmeFormater(response.projectTitle)})
 
 ## Tests
 
 ${response.tests}
+
 [Return to Top](#${readmeFormater(response.projectTitle)})
 
 ## Licence
@@ -118,12 +127,15 @@ ${response.tests}
 ${licenceDict[response.licence]}
 This project is protected by ${response.licence}
 
+[Return to Top](#${readmeFormater(response.projectTitle)})
+
 ## Questions
 
 ### GitHub
-github.com/${response.gitHubUsername.replaceAll(' ','')}
+[${response.gitHubUsername}](https://github.com/${response.gitHubUsername.replaceAll(' ','')})
 ### Email
 Please reach out to me with any questions at ${response.email}
+
 [Return to Top](#${readmeFormater(response.projectTitle)})
 
     `
@@ -132,9 +144,7 @@ Please reach out to me with any questions at ${response.email}
 )
 });
 
-const readmeFormater = (unformatted) => {
-    return (unformatted.replaceAll(" ","-")).toLowerCase();
-};
+
 
 
 
