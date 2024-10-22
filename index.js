@@ -66,7 +66,7 @@ inquirer
         type: 'list',
         message: colors.magenta('Please choose a ') + colors.yellow('Licence ') + colors.magenta('from the following list:'),
         name: 'licence',
-        choices: ["Apache 2.0 License","Creative Commons","The MIT License"]     
+        choices: ["Apache 2.0 License","Creative Commons","The MIT License","No Licence"]     
     },
     {
         //TODO: Prompt for Github Username (input)
