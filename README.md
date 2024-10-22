@@ -9,7 +9,6 @@ The README Builder is a script for creating a full README.md file using prompts.
 * [Installation](#installation)
 * [Usage](#usage)
 * [Contribution Guidelines](#contribution-guidlines)
-* [Tests](#tests)
 * [Licence](#licence)
 * [Questions](#questions)
 
